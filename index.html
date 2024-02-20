@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <form id="dataForm">
+      Name: <input type="text" name="name"><br>
+      Email: <input type="text" name="email"><br>
+      <input type="button" value="Submit" onclick="submitForm()">
+    </form>
+
+    <script>
+      function submitForm() {
+        var form = document.getElementById("dataForm");
+        var formData = new FormData(form);
+        
+        fetch('https://script.google.com/macros/s/AKfycby73d6OzHh1qEoKvKtZyNtGzc7Q__j0p7xuHUguRSFe7i64Eeg4-cA7zEjqJB3z_ZFE/exec', {
+          method: 'POST',
+          body: formData
+        })
+        .then(response => response.json())
+        .then(data => console.log(data))
+        .catch(error => console.error('Error:', error));
+      }
+    </script>
+  </body>
+</html>
